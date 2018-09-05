@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3000';
-
 import {SET_USER, SET_FILE_TREE, SET_STATUS} from '../constants/action-types';
 
 export const setUser = user => ({ type: SET_USER, payload: user });
@@ -11,7 +9,7 @@ export const setStatus = status => ({ type: SET_STATUS, payload: status });
 export let postLogin = (user) => {
   console.log(user);
   return dispatch => {
-    return axios.post(URL + '/login', user).then(
+    return axios.post('/login', user).then(
       response => {
         console.log(response);
         dispatch(setUser(response.data));
@@ -26,7 +24,7 @@ export let postLogin = (user) => {
 
 export let postLogout = () => {
   return dispatch => {
-    return axios.get(URL + '/logout').then(
+    return axios.get('/logout').then(
       response => {
         console.log(response);
         dispatch(setUser({}));
@@ -41,7 +39,7 @@ export let postLogout = () => {
 
 export const postLoadLink = link => {
   return dispatch => {
-    return axios.post(URL + '/load', {'link': link}).then(
+    return axios.post('/load', {'link': link}).then(
       response => {
         console.log(response);
         dispatch(setFileTree(response.data));
@@ -56,7 +54,7 @@ export const postLoadLink = link => {
 
 export const postAddFiles = files => {
   return dispatch => {
-    return axios.post(URL + '/download', {'files': files}).then(
+    return axios.post('/download', {'files': files}).then(
       response => {
         console.log(response)
       },
@@ -70,7 +68,7 @@ export const postAddFiles = files => {
 
 export const getStatus = () => {
   return dispatch => {
-    return axios.get(URL + '/status').then(
+    return axios.get('/status').then(
       response => {
         console.log(response);
         dispatch(setStatus(response.data));
