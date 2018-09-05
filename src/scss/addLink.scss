@@ -1,0 +1,35 @@
+td[role=gridcell] {
+}
+
+span.fancytree-node {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.modal-lg {
+  max-width: 90% !important;
+}
+
+.table-fileTree {
+  table-layout: fixed;
+}
+
+.checkboxCol {
+  width: 32px;
+}
+
+.nameCol {
+  width: 100%;
+}
+
+.sizeCol {
+  width: 100px;
+}
+
+.selected-download {
+  cursor: default;
+}
+
+.btn-download {
+  float: right;
+}
