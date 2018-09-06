@@ -51,8 +51,6 @@ router.post('/login', function(req, res) {
     password: req.body.password
   };
 
-  console.log(options);
-
   storage = mega(options, function(err, data) {
     console.log(data);
 

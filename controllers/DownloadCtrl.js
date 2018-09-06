@@ -44,6 +44,7 @@ module.exports = {
 
     file.status = 'queued';
     file.downloadedSize = 0;
+    file.humanDownloadedSize = 0;
 
     db.get('queued')
       .push(file)

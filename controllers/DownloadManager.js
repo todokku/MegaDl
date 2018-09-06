@@ -5,6 +5,7 @@ const mega = require('megajs');
 const path = require('path');
 const mkdirp = require('mkdirp');
 const progress = require('progress-stream');
+const filesize = require('filesize');
 
 const dlCtrl = require('../controllers/DownloadCtrl');
 
@@ -62,6 +63,7 @@ function download() {
     stream.on('data', (chunk) => {
       //console.log(`Received ${chunk.length} bytes of data.`);
       active.downloadedSize += chunk.length;
+      active.humanDownloadedSize = filesize(active.downloadedSize);
       dlCtrl.updateQueued(active);
     });
 

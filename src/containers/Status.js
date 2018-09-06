@@ -73,8 +73,8 @@ class ConnectedStatus extends Component {
             this.state.queued.map(function(file) {
               return <tr key={file.name}>
                 <td>{file.name}</td>
-                <td>{file.size}</td>
-                <td>{file.downloadedSize}</td>
+                <td>{file.humanSize}</td>
+                <td>{file.humanDownloadedSize}</td>
               </tr>
             })
           }
@@ -92,7 +92,7 @@ class ConnectedStatus extends Component {
             this.state.completed.map(function(file) {
               return <tr key={file.name}>
                 <td>{file.name}</td>
-                <td>{file.size}</td>
+                <td>{file.humanSize}</td>
               </tr>
             })
           }
