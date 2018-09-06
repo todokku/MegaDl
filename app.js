@@ -33,14 +33,14 @@ app.use(logger('common', {
   },
   stream: logStream
 }));
-app.use(logger('dev'), {
+app.use(logger('dev', {
   skip: function (req, res) {
     if (req.url === '/status')
       return true;
     else
       return false;
   }
-});
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
