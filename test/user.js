@@ -1,3 +1,5 @@
+global.__basedir = __dirname + '/../';
+
 let userCtrl = require('../controllers/UserCtrl');
 let assert = require('assert');
 
@@ -12,7 +14,7 @@ describe('user db', function() {
     done();
   });
 
-  it('should be empty db', function (done) {
+  it('empty db', function (done) {
     let value = userCtrl.getUser();
     assert.deepEqual(value, {});
     assert.equal(true, userCtrl.isEmpty());

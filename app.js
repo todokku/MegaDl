@@ -1,13 +1,10 @@
 'use strict';
 
-const webpack_config = require('./webpack.config');
-
-const webpack = require('webpack');
-const middleware = require('webpack-dev-middleware');
-const compiler = webpack(webpack_config);
-
 const express = require('express');
+
 const path = require('path');
+global.__basedir = path.resolve(__dirname);
+
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -33,6 +30,7 @@ app.use(logger('common', {
   },
   stream: logStream
 }));
+
 app.use(logger('dev', {
   skip: function (req, res) {
     if (req.url === '/status')
@@ -41,16 +39,19 @@ app.use(logger('dev', {
       return false;
   }
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(middleware(compiler, {
-  // webpack-dev-middleware options
-  writeToDisk: true
-}));
-
 app.use('/', router);
+
+const server = app.listen(8081, function () {
+  let host = server.address().address;
+  let port = server.address().port;
+
+  console.log("Example app listening at http://%s:%s", host, port)
+});
 
 module.exports = app;

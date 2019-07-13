@@ -1,3 +1,5 @@
+global.__basedir = __dirname + '/../';
+
 let dlCtrl = require('../controllers/DownloadCtrl');
 let assert = require('assert');
 
