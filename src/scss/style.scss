@@ -1,3 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~datatables.net-bs4/css/dataTables.bootstrap4';
 
 $mega-color: rgb(217, 0, 7);
+
+.status-table {
+  width: 100%;
+}

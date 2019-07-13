@@ -1,6 +1,7 @@
 'use strict';
 
 import 'bootstrap';
+import 'datatables.net-bs4';
 import './scss/style.scss'
 
 import React from 'react';

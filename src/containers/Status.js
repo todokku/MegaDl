@@ -1,6 +1,7 @@
 'use strict';
 
-import $ from 'jquery'
+const $ = require('jquery');
+$.DataTable = require('datatables.net-bs4');
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -27,6 +28,7 @@ class ConnectedStatus extends Component {
   }
 
   componentDidMount() {
+    $(this.refs.queued).DataTable();
     this.props.getStatus();
     this.pollStatus();
   }
@@ -60,7 +62,7 @@ class ConnectedStatus extends Component {
     //TODO: Add Global Checkbox
     return (
       <div>
-        <table id="queued" className="table">
+        <table ref="queued" id="queued" className="display status-table">
           <thead>
           <tr>
             <th>Name</th>
