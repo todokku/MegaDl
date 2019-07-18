@@ -5,7 +5,14 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const fs = require('fs');
 
-const adapter = new FileSync(path.join(global.__basedir, 'database/downloads.json'));
+const __db_folder = path.join(global.__basedir, 'database');
+
+// Create database folder if it doesn't already exist
+if (!fs.existsSync(__db_folder)){
+  fs.mkdirSync(__db_folder);
+}
+
+const adapter = new FileSync(path.join(__db_folder, 'downloads.json'));
 const db = low(adapter);
 
 // Set some defaults (required if your JSON file is empty)
