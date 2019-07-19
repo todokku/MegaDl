@@ -1,31 +1,21 @@
 'use strict';
 
+import '../scss/sidebar.scss';
+
 import React, { Component } from "react";
 
 export default class Sidebar extends Component {
   constructor(props) {
     super(props);
-
-    /*this.state = {
-      loggedIn: false,
-      username: ''
-    };*/
   }
-
-  /*handleChange = (event) => {
-    console.log(event.target.id + ': ' + event.target.value);
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  };*/
 
   render() {
     return (
-      <nav className="col-md-2 d-none d-md-block bg-light sidebar">
+      <nav className="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar">
         <div className="sidebar-sticky">
-          <ul className="nav flex-column">
+          <ul className="nav flex-column pt-2">
             <li className="nav-item">
-              <a className="nav-link active" href="#">
+              <a className="nav-link" href="#">
                 Dashboard <span className="sr-only">(current)</span>
               </a>
             </li>

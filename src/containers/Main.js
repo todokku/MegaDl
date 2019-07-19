@@ -1,28 +1,17 @@
 'use strict';
 
 import React, { Component } from "react";
+import Status from "./status";
 
 export default class Main extends Component {
   constructor(props) {
     super(props);
-
-    /*this.state = {
-      loggedIn: false,
-      username: ''
-    };*/
   }
-
-  /*handleChange = (event) => {
-    console.log(event.target.id + ': ' + event.target.value);
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  };*/
 
   render() {
     return (
-      <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        MAIN CODE HERE
+      <main role="main" className="col-md-9 offset-md-3 col-lg-10 offset-lg-2 ml-sm-auto pt-3 px-4">
+        <Status />
       </main>
     );
   }

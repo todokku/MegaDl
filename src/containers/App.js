@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 import Sidebar from './Sidebar'
-import Status from './Status'
+import Main from './Main'
 import AddLink from './AddLink';
 import Login from './Login';
 
@@ -11,7 +11,7 @@ const App = () => (
     <div className="container-fluid">
       <div className="row">
         <Sidebar />
-        <Status />
+        <Main />
       </div>
     </div>
     <AddLink />
