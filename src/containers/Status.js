@@ -2,6 +2,9 @@
 
 const $ = require('jquery');
 $.DataTable = require('datatables.net-bs4');
+require('datatables.net-colreorder-bs4');
+require('datatables.net-rowreorder-bs4');
+require('datatables.net-select-bs4');
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -23,12 +26,35 @@ class ConnectedStatus extends Component {
 
     this.state = {
       completed: [],
-      queued: []
+      queued: [],
+      queuedTable: {},
+      completedTable: {}
     };
   }
 
   componentDidMount() {
-    $(this.refs.queued).DataTable();
+    this.state.queuedTable = $(this.refs.queued).DataTable({
+      paging: false,
+      info: false,
+      select: {style: 'multi'},
+      columns: [
+        {
+          title: 'Name',
+          data: 'name'
+        },
+        {
+          title: 'Size',
+          data: 'humanSize',
+          size: '20'
+        },
+        {
+          title: 'Downloaded',
+          data: 'humanDownloadedSize',
+          size: '20'
+        },
+      ]
+    });
+
     this.props.getStatus();
     this.pollStatus();
   }
@@ -37,13 +63,18 @@ class ConnectedStatus extends Component {
     setTimeout(() => {
       this.props.getStatus();
       this.pollStatus();
-    }, 1000);
+    }, 100000);
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     const c = nextProps.status.completed;
     const q = nextProps.status.queued;
+
+    const table = this.state.queuedTable;
+    table.clear();
+    table.rows.add(q);
+    table.draw();
+
     this.setState({
       completed: c ? c : [],
       queued: q ? q : []
@@ -62,26 +93,7 @@ class ConnectedStatus extends Component {
     //TODO: Add Global Checkbox
     return (
       <div>
-        <table ref="queued" id="queued" className="display status-table">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Downloaded</th>
-          </tr>
-          </thead>
-          <tbody>
-          {
-            this.state.queued.map(function(file) {
-              return <tr key={file.name}>
-                <td>{file.name}</td>
-                <td>{file.humanSize}</td>
-                <td>{file.humanDownloadedSize}</td>
-              </tr>
-            })
-          }
-          </tbody>
-        </table>
+        <table ref="queued" id="queued" className="status-table table table-striped table-bordered" />
         <table id="completed" className="table">
           <thead>
           <tr>

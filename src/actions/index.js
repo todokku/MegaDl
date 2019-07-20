@@ -70,7 +70,6 @@ export const getStatus = () => {
   return dispatch => {
     return axios.get('/download/status').then(
       response => {
-        console.log(response);
         dispatch(setStatus(response.data));
       },
       err => {

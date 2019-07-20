@@ -93,6 +93,20 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   devServer: {
-    contentBase: './public'
+    contentBase: './public',
+    hot: true,
+    before: function(app, server) {
+      app.get('/download/status', function(req, res) {
+        res.json({'queued': [{
+          name: "test_file.txt",
+            humanSize: "263.74 MB",
+            humanDownloadedSize: "63.74 MB"
+        }, {
+          name: "test_file2.txt",
+            humanSize: "312.74 MB",
+            humanDownloadedSize: "12.74 MB"
+        }], 'completed': []});
+      });
+    }
   }
 };

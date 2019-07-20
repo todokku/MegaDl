@@ -1,8 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~datatables.net-bs4/css/dataTables.bootstrap4';
+@import '~datatables.net-select-bs4/css/select.bootstrap4';
+@import '~datatables.net-colreorder-bs4/css/colReorder.bootstrap4';
+@import '~datatables.net-rowreorder-bs4/css/rowReorder.bootstrap4';
 
 $mega-color: rgb(217, 0, 7);
 
 .status-table {
   width: 100%;
+}
+
+.dataTable tbody tr {
+  cursor: pointer;
 }
