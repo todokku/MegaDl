@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from "react";
-import Status from "./status";
+import Status from "./Status";
 
 export default class Main extends Component {
   constructor(props) {
