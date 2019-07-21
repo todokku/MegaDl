@@ -16,7 +16,7 @@ const adapter = new FileSync(path.join(__db_folder, 'downloads.json'));
 const db = low(adapter);
 
 // Set some defaults (required if your JSON file is empty)
-db.defaults({ completed: [], queued: []})
+db.defaults({ completed: [], queued: [], queued_count: 0, completed_count: 0})
     .write();
 
 function isCompleted(file) {
@@ -50,6 +50,7 @@ module.exports = {
     if (isCompleted(file))
       throw new Error("File Already Completed");
 
+    file.id = this.updateCount('queued');
     file.status = 'queued';
     file.downloadedSize = 0;
     file.humanDownloadedSize = 0;
@@ -111,6 +112,15 @@ module.exports = {
   errQueued: function(file) {
     file.status = 'error';
     this.updateQueued(file);
+  },
+
+  getCount: function(key) {
+    return db.get(key + '_count').value();
+  },
+
+  updateCount: function(key) {
+    db.update(key + '_count', n => n + 1).write();
+    return this.getCount(key);
   }
 
 };

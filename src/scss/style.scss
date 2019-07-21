@@ -10,6 +10,19 @@ $mega-color: rgb(217, 0, 7);
   width: 100%;
 }
 
+.status-nav {
+  padding: 0 !important;
+}
+
 .dataTable tbody tr {
   cursor: pointer;
+}
+
+.dataTables_filter label input {
+  height: 48px;
+  width: 250px;
+}
+
+label {
+  margin: 0 !important;
 }
