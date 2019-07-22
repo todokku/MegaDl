@@ -147,7 +147,7 @@ class ConnectedStatus extends Component {
     //TODO: Add Global Checkbox
     return (
       <main role="main" className="col-md-9 offset-md-3 col-lg-10 offset-lg-2 status-nav">
-        <nav className="navbar sticky-top navbar-expand status-nav">
+        <nav className="navbar sticky-top navbar-expand status-nav" style={{top: '56px'}}>
           <a href="#" className="list-group-item list-group-item-action text-center">Remove</a>
           <a href="#" className="list-group-item list-group-item-action text-center">&uarr;</a>
           <a href="#" className="list-group-item list-group-item-action text-center">&darr;</a>
