@@ -44,14 +44,9 @@ function download() {
     if (err) return console.log(err);
 
     let prog = progress({
-      time: 1000,
+      //time: 100,
       length: active.size,
       transferred: startByte
-    });
-
-    prog.on('progress', function(progress) {
-      progress.percentage = +progress.percentage.toFixed(2);
-      console.log(progress);
     });
 
     let stream = file.download({start: startByte});
@@ -62,8 +57,11 @@ function download() {
 
     stream.on('data', (chunk) => {
       //console.log(`Received ${chunk.length} bytes of data.`);
+      let progress = prog.progress();
       active.downloadedSize += chunk.length;
       active.humanDownloadedSize = filesize(active.downloadedSize);
+      active.humanSpeed = filesize(progress.speed) + '/s';
+      active.percentage = progress.percentage;
       dlCtrl.updateQueued(active);
     });
 

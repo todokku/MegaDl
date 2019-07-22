@@ -52,6 +52,7 @@ module.exports = {
 
     file.id = this.updateCount('queued');
     file.status = 'queued';
+    file.humanSpeed = '';
     file.downloadedSize = 0;
     file.humanDownloadedSize = 0;
 

@@ -101,12 +101,14 @@ module.exports = {
           id: 1,
           name: "test_file2.txt",
             humanSize: "263.74 MB",
-            humanDownloadedSize: "63.74 MB"
+            humanDownloadedSize: "63.74 MB",
+            humanSpeed: '2.67 MB/s'
         }, {
           id: 2,
           name: "test_file1.txt",
             humanSize: "312.74 MB",
-            humanDownloadedSize: "12.74 MB"
+            humanDownloadedSize: "12.74 MB",
+            humanSpeed: ''
         }], 'completed': []});
       });
     }

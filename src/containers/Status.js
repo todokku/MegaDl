@@ -62,6 +62,11 @@ class ConnectedStatus extends Component {
           data: 'humanDownloadedSize',
           width: '96px'
         },
+        {
+          title: 'Speed',
+          data: 'humanSpeed',
+          width: '72px'
+        }
       ],
       colReorder: {
         fixedColumnsLeft: 2
