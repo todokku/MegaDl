@@ -33,6 +33,9 @@ class ConnectedStatus extends Component {
   }
 
   componentDidMount() {
+    $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) {
+      console.log(message);
+    };
     this.state.queuedTable = $(this.refs.queued).DataTable({
       paging: false,
       info: false,
